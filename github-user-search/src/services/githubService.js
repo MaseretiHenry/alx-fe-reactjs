@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-export const fetchUserData = async (username) => {
-  const url = `https://api.github.com/users/${username}`;
-  const response = await axios.get(url);
+const SEARCH_URL = 'https://api.github.com/search/users';
+
+export const fetchAdvancedUsers = async (query) => {
+  const response = await axios.get(`${SEARCH_URL}?q=${encodeURIComponent(query)}`);
   return response.data;
 };
