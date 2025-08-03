@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useRecipeStore } from './recipeStore';
+import { useRecipeStore } from '../store/recipeStore';
 import EditRecipeForm from './EditRecipeForm';
 import DeleteRecipeButton from './DeleteRecipeButton';
 
@@ -15,11 +15,8 @@ const RecipeDetails = () => {
     <div>
       <h2>{recipe.title}</h2>
       <p>{recipe.description}</p>
-
-      <h3>Edit Recipe</h3>
       <EditRecipeForm recipe={recipe} />
-
-      <DeleteRecipeButton id={recipe.id} />
+      <DeleteRecipeButton recipeId={id} />
     </div>
   );
 };
