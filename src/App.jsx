@@ -1,16 +1,21 @@
-import Header from './components/Header';
-import Footer from './components/Footer';
-import MainContent from './components/MainContent';
-import UserProfile from './components/UserProfile';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AddRecipeForm from './components/AddRecipeForm';
+import RecipeList from './components/RecipeList';
+import RecipeDetails from './components/RecipeDetails';
 
 function App() {
   return (
-    <>
-      <Header />
-      <MainContent />
-      <UserProfile />
-      <Footer />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <AddRecipeForm />
+            <RecipeList />
+          </>
+        } />
+        <Route path="/recipe/:id" element={<RecipeDetails />} />
+      </Routes>
+    </Router>
   );
 }
 
