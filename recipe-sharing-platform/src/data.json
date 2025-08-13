@@ -2,59 +2,15 @@
   {
     "id": 1,
     "title": "Spaghetti Carbonara",
-    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/150",
-    "ingredients": [
-      "200g spaghetti",
-      "100g pancetta or bacon",
-      "2 large eggs",
-      "50g grated Parmesan cheese",
-      "Salt and pepper to taste"
-    ],
+    "summary": "Classic Italian pasta dish with creamy sauce.",
+    "image": "https://via.placeholder.com/400x300",
+    "ingredients": ["Spaghetti", "Eggs", "Parmesan", "Bacon", "Black Pepper"],
     "instructions": [
-      "Cook spaghetti in salted boiling water until al dente.",
-      "Fry pancetta until crispy.",
-      "Beat eggs with Parmesan, salt, and pepper.",
-      "Drain spaghetti, then quickly mix with pancetta and egg mixture.",
-      "Serve immediately."
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Chicken Tikka Masala",
-    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://via.placeholder.com/150",
-    "ingredients": [
-      "500g chicken breast, cubed",
-      "200ml tomato puree",
-      "100ml cream",
-      "2 tbsp tikka masala spice mix",
-      "Salt to taste"
-    ],
-    "instructions": [
-      "Marinate chicken in spices and yogurt for 2 hours.",
-      "Grill or pan-fry chicken until cooked.",
-      "Simmer tomato puree with spices.",
-      "Add chicken and cream, simmer 10 mins.",
-      "Serve with rice or naan."
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Avocado Toast",
-    "summary": "Toasted bread topped with mashed avocado, salt, pepper, and a drizzle of olive oil.",
-    "image": "https://via.placeholder.com/150",
-    "ingredients": [
-      "2 slices bread",
-      "1 ripe avocado",
-      "Salt and pepper to taste",
-      "Olive oil for drizzling"
-    ],
-    "instructions": [
-      "Toast bread until golden.",
-      "Mash avocado with salt and pepper.",
-      "Spread avocado on toast.",
-      "Drizzle with olive oil and serve."
+      "Boil pasta.",
+      "Fry bacon until crisp.",
+      "Mix eggs and cheese.",
+      "Combine pasta with bacon and sauce.",
+      "Serve hot."
     ]
   }
 ]
