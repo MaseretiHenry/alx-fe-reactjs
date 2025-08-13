@@ -1,27 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import RecipeList from './components/RecipeList';
-import RecipeDetails from './components/RecipeDetails';
-import SearchBar from './components/SearchBar';
+import { useState } from 'react'
+import './App.css'
 
 function App() {
-  return (
-    <Router>
-      <div className="max-w-2xl mx-auto p-4">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <SearchBar />
-                <RecipeList />
-              </>
-            }
-          />
-          <Route path="/recipes/:id" element={<RecipeDetails />} />
-        </Routes>
-      </div>
-    </Router>
-  );
-}
+  const [count, setCount] = useState(0)
 
-export default App;
+  return (
+    <>
+      <h1>Hello, Holberton!</h1>
+      <div className="card">
+
