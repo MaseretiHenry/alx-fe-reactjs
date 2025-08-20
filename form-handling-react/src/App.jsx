@@ -1,12 +1,15 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RegistrationForm from "./components/RegistrationForm";
-import FormikForm from "./components/FormikForm";
+import FormikForm from "./components/formikForm"; // ✅ added
 
 function App() {
   return (
-    <div className="p-6 space-y-10">
-      <RegistrationForm />
-      <FormikForm />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<RegistrationForm />} />
+        <Route path="/formik" element={<FormikForm />} /> {/* ✅ Formik route */}
+      </Routes>
+    </Router>
   );
 }
 

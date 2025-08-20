@@ -1,48 +1,80 @@
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-const validationSchema = Yup.object({
-  username: Yup.string().required("Username is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string().required("Password is required"),
-});
+const FormikForm = () => {
+  const validationSchema = Yup.object({
+    username: Yup.string().required("Username is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
+  });
 
-function FormikForm() {
   return (
-    <Formik
-      initialValues={{ username: "", email: "", password: "" }}
-      validationSchema={validationSchema}
-      onSubmit={(values) => {
-        console.log("Formik submitted:", values);
-      }}
-    >
-      <Form className="max-w-md mx-auto p-4 shadow-md bg-white rounded-lg">
-        <h2 className="text-xl font-bold mb-4">Register (Formik)</h2>
+    <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow-md bg-white">
+      <h2 className="text-2xl font-bold mb-4 text-center">Formik Registration Form</h2>
+      <Formik
+        initialValues={{ username: "", email: "", password: "" }}
+        validationSchema={validationSchema}
+        onSubmit={(values) => {
+          console.log("Form data:", values);
+          alert("Form submitted successfully!");
+        }}
+      >
+        {() => (
+          <Form className="flex flex-col gap-4">
+            <div>
+              <label className="block font-medium">Username:</label>
+              <Field
+                type="text"
+                name="username"
+                className="w-full p-2 border rounded"
+              />
+              <ErrorMessage
+                name="username"
+                component="div"
+                className="text-red-500 text-sm"
+              />
+            </div>
 
-        <div className="mb-4">
-          <label className="block">Username:</label>
-          <Field type="text" name="username" className="border rounded w-full p-2" />
-          <ErrorMessage name="username" component="p" className="text-red-500 text-sm" />
-        </div>
+            <div>
+              <label className="block font-medium">Email:</label>
+              <Field
+                type="email"
+                name="email"
+                className="w-full p-2 border rounded"
+              />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className="text-red-500 text-sm"
+              />
+            </div>
 
-        <div className="mb-4">
-          <label className="block">Email:</label>
-          <Field type="email" name="email" className="border rounded w-full p-2" />
-          <ErrorMessage name="email" component="p" className="text-red-500 text-sm" />
-        </div>
+            <div>
+              <label className="block font-medium">Password:</label>
+              <Field
+                type="password"
+                name="password"
+                className="w-full p-2 border rounded"
+              />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className="text-red-500 text-sm"
+              />
+            </div>
 
-        <div className="mb-4">
-          <label className="block">Password:</label>
-          <Field type="password" name="password" className="border rounded w-full p-2" />
-          <ErrorMessage name="password" component="p" className="text-red-500 text-sm" />
-        </div>
-
-        <button type="submit" className="bg-green-500 text-white p-2 rounded w-full">
-          Register
-        </button>
-      </Form>
-    </Formik>
+            <button
+              type="submit"
+              className="bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+            >
+              Register
+            </button>
+          </Form>
+        )}
+      </Formik>
+    </div>
   );
-}
+};
 
 export default FormikForm;
