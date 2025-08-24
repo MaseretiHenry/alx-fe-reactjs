@@ -9,49 +9,43 @@ const RegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!username || !email || !password) {
-      setError("All fields are required!");
+      setError("All fields are required");
       return;
     }
     setError("");
-    console.log("Form submitted:", { username, email, password });
+    console.log({ username, email, password });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Registration Form (Controlled Components)</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
       <div>
-        <label>Username: </label>
+        <label>Username:</label>
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-
       <div>
-        <label>Email: </label>
+        <label>Email:</label>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-
       <div>
-        <label>Password: </label>
+        <label>Password:</label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <button type="submit">Register</button>
     </form>
   );
 };
 
 export default RegistrationForm;
-
