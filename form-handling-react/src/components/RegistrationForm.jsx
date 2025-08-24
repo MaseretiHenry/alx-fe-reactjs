@@ -1,65 +1,73 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const RegistrationForm = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
+function RegistrationForm() {
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
-  const validate = () => {
-    const newErrors = {};
-    if (!username) newErrors.username = "Username is required";
-    if (!email) newErrors.email = "Email is required";
-    if (!password) newErrors.password = "Password is required";
-    return newErrors;
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
+    if (!formData.username || !formData.email || !formData.password) {
+      setError("All fields are required!");
       return;
     }
-    alert("Form submitted successfully!");
+    setError("");
+
+    // Simulated API call
+    const response = await fetch("https://jsonplaceholder.typicode.com/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+    const data = await response.json();
+    console.log("Controlled Form API Response:", data);
+    alert("User registered successfully (Controlled Form)!");
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 max-w-md mx-auto space-y-4 bg-white rounded shadow">
-      <h2 className="text-xl font-bold">Registration (Controlled)</h2>
+    <div>
+      <h2>User Registration (Controlled Form)</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={formData.username}
+          onChange={handleChange}
+        /><br />
 
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        className="w-full border p-2 rounded"
-      />
-      {errors.username && <p className="text-red-500 text-sm">{errors.username}</p>}
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+        /><br />
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="w-full border p-2 rounded"
-      />
-      {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+        /><br />
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="w-full border p-2 rounded"
-      />
-      {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
-
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-        Register
-      </button>
-    </form>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <button type="submit">Register</button>
+      </form>
+    </div>
   );
-};
+}
 
 export default RegistrationForm;
